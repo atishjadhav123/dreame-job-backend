@@ -18,7 +18,7 @@ app.use(cookieParser())
 
 const corsOptions = {
     origin: true,
-    credentials: true,
+    credentials: "https://dreame-job-frountend-host.vercel.app",
 }
 
 app.use(cors(corsOptions))
