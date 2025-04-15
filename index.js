@@ -17,8 +17,8 @@ app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
 
 const corsOptions = {
-    origin: true,
-    credentials: "https://dreame-job-frountend-host.vercel.app",
+    origin: "https://dreame-job-frountend-host.vercel.app",
+    credentials: true,
 }
 
 app.use(cors(corsOptions))
