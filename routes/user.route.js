@@ -6,7 +6,7 @@ const router = express.Router()
 
 router
     .post("/register", singleupload, register)
-    .post("/login", login)
+    .post("/login", isAuthenticated, login)
     .delete("/logout", logout)
     .put("/profile/update", isAuthenticated, singleupload, updateProfile)
 
