@@ -6,6 +6,6 @@ const router = express.Router()
 router
     .post("/applyjob/:id", isAuthenticated, applyJob)
     .get("/getapplyjob", isAuthenticated, getappliedJob)
-    .get("/:jobid/applicants", isAuthenticated, getAplicant)
+    .get("/:id/applicants", isAuthenticated, getAplicant)
     .put("/status/:id/update", isAuthenticated, updateStatus)
 export default router
