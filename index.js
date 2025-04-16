@@ -7,10 +7,15 @@ import userRoute from "./routes/user.route.js";
 import companayRoute from "./routes/company.route.js";
 import jobroute from "./routes/job.route.js";
 import apllyJob from "./routes/aplication.route.js";
+import path from 'path';
+import { fileURLToPath } from 'url';
 dotenv.config({})
 
 const app = express()
 const PORT = 5000
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename)
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
