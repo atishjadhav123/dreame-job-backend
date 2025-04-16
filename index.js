@@ -21,11 +21,18 @@ const corsOptions = {
     credentials: true,
 }
 
+
 app.use(cors(corsOptions))
 app.use("/api/auth", userRoute)
 app.use("/api/company", companayRoute)
 app.use("/api/job", jobroute)
 app.use("/api/applay", apllyJob)
+
+app.use(express.static(path.join(__dirname, "build")))
+
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "build", "index.html"));
+});
 
 mongoose.connect(process.env.MONGO_URL)
 mongoose.connection.once("open", () => {
