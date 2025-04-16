@@ -27,6 +27,11 @@ app.use("/api/company", companayRoute)
 app.use("/api/job", jobroute)
 app.use("/api/applay", apllyJob)
 
+app.use((err, req, res, next) => {
+    console.log(err);
+    res.status(500).json({ message: "Server Error", error: err.message });
+});
+
 mongoose.connect(process.env.MONGO_URL)
 mongoose.connection.once("open", () => {
     console.log("✌ mongo connected")
