@@ -3,19 +3,14 @@ import cors from "cors"
 import cookieParser from "cookie-parser"
 import mongoose from "mongoose"
 import dotenv from "dotenv"
-import userRoute from "./routes/user.route.js"
+import userRoute from "./routes/user.route.js";
 import companayRoute from "./routes/company.route.js";
-import jobroute from "./routes/job.route.js"
-import apllyJob from "./routes/aplication.route.js"
-import path from 'path'
-import { fileURLToPath } from 'url'
+import jobroute from "./routes/job.route.js";
+import apllyJob from "./routes/aplication.route.js";
 dotenv.config({})
 
 const app = express()
 const PORT = 5000
-
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
@@ -26,18 +21,11 @@ const corsOptions = {
     credentials: true,
 }
 
-
 app.use(cors(corsOptions))
 app.use("/api/auth", userRoute)
 app.use("/api/company", companayRoute)
 app.use("/api/job", jobroute)
 app.use("/api/applay", apllyJob)
-
-app.use(express.static(path.join(__dirname, "build")))
-
-app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "build", "index.html"))
-})
 
 mongoose.connect(process.env.MONGO_URL)
 mongoose.connection.once("open", () => {
