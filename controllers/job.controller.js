@@ -49,7 +49,6 @@ export const getAllJob = async (req, res) => {
                 success: false
             })
         }
-        // console.log("jobs from get jobs", jobs)
 
         res.status(200).json({
             jobs,
